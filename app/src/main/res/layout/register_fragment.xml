@@ -1,25 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/login"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:gravity="center_horizontal"
     tools:context=".ui.login.LoginFragment">
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
-        android:text="Welcome \n Kotlin Simple Ecommerce Apps"
-        android:textAlignment="center"
-        android:textColor="#000"
-        android:textSize="25sp" />
 
     <LinearLayout
         android:layout_width="301dp"
+        android:layout_marginTop="50dp"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
         android:orientation="vertical">
 
         <EditText
@@ -43,30 +34,53 @@
             android:inputType="textPassword"
             android:paddingLeft="10dp" />
 
+        <EditText
+            android:id="@+id/etFullname"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:background="@drawable/bg_edittext"
+            android:layout_marginTop="20dp"
+            android:hint="Fullname"
+            android:textSize="14sp"
+            android:paddingLeft="10dp" />
+
+        <EditText
+            android:id="@+id/etNoHp"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:background="@drawable/bg_edittext"
+            android:layout_marginTop="20dp"
+            android:hint="No HP"
+            android:inputType="phone"
+            android:textSize="14sp"
+            android:paddingLeft="10dp" />
+
+        <EditText
+            android:id="@+id/etAlamat"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:background="@drawable/bg_edittext"
+            android:layout_marginTop="20dp"
+            android:gravity="start"
+            android:paddingTop="10dp"
+            android:hint="Alamat"
+            android:textSize="14sp"
+            android:paddingLeft="10dp" />
+
         <ProgressBar
-            android:id="@+id/pbLogin"
+            android:id="@+id/pbRegister"
             android:layout_gravity="center"
             android:layout_marginTop="20dp"
             android:visibility="gone"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
 
-        <Button
-            android:id="@+id/btnLogin"
-            android:layout_width="301dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="50dp"
-            android:background="@drawable/bg_button_blue"
-            android:text="Login"
-            android:textAllCaps="false"
-            android:textColor="#FFF"
-            android:textSize="18sp" />
 
         <Button
             android:id="@+id/btnRegister"
             android:layout_width="301dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="30dp"
             android:background="@drawable/bg_button_blue"
             android:text="Register"
             android:textAllCaps="false"
@@ -75,4 +89,4 @@
 
     </LinearLayout>
 
-</RelativeLayout>
+</LinearLayout>
