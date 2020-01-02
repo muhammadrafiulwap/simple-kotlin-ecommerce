@@ -9,8 +9,10 @@ import android.view.ViewGroup
 import com.udacoding.kotlinsimpleecommerce.R
 import com.udacoding.kotlinsimpleecommerce.Utils.hide
 import com.udacoding.kotlinsimpleecommerce.Utils.show
+import com.udacoding.kotlinsimpleecommerce.ui.register.Register
 import kotlinx.android.synthetic.main.login_fragment.*
 import org.jetbrains.anko.sdk27.coroutines.onClick
+import org.jetbrains.anko.support.v4.startActivity
 import org.jetbrains.anko.toast
 
 class LoginFragment : Fragment(), LoginListener {
@@ -36,6 +38,10 @@ class LoginFragment : Fragment(), LoginListener {
 
         btnLogin.onClick {
             viewModel.loginUser("${etUsername.text}","${etPassword.text}")
+        }
+
+        btnRegister.onClick {
+            startActivity<Register>()
         }
     }
 
