@@ -14,10 +14,10 @@
         android:text="Welcome \n Kotlin Simple Ecommerce Apps"
         android:textAlignment="center"
         android:textColor="#000"
-        android:textSize="25sp" />
+        android:textSize="20sp" />
 
     <LinearLayout
-        android:layout_width="301dp"
+        android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:orientation="vertical">
@@ -29,6 +29,7 @@
             android:background="@drawable/bg_edittext"
             android:layout_marginTop="20dp"
             android:hint="Username"
+            android:singleLine="true"
             android:textSize="14sp"
             android:paddingLeft="10dp" />
 
@@ -36,6 +37,7 @@
             android:id="@+id/etPassword"
             android:layout_width="match_parent"
             android:layout_height="45dp"
+            android:singleLine="true"
             android:layout_marginTop="20dp"
             android:background="@drawable/bg_edittext"
             android:hint="Password"
@@ -53,25 +55,25 @@
 
         <Button
             android:id="@+id/btnLogin"
-            android:layout_width="301dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="50dp"
-            android:background="@drawable/bg_button_blue"
             android:text="Login"
             android:textAllCaps="false"
+            android:background="@drawable/bg_button_blue"
             android:textColor="#FFF"
-            android:textSize="18sp" />
+            android:textSize="14sp" />
 
         <Button
             android:id="@+id/btnRegister"
-            android:layout_width="301dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:background="@drawable/bg_button_blue"
             android:text="Register"
             android:textAllCaps="false"
             android:textColor="#FFF"
-            android:textSize="18sp" />
+            android:textSize="14sp" />
 
     </LinearLayout>
 

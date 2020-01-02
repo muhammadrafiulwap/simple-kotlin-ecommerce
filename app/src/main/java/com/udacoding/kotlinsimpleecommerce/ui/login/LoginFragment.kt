@@ -7,8 +7,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.udacoding.kotlinsimpleecommerce.R
+import com.udacoding.kotlinsimpleecommerce.Utils.hide
+import com.udacoding.kotlinsimpleecommerce.Utils.show
+import kotlinx.android.synthetic.main.login_fragment.*
+import org.jetbrains.anko.sdk27.coroutines.onClick
+import org.jetbrains.anko.toast
 
-class LoginFragment : Fragment() {
+class LoginFragment : Fragment(), LoginListener {
 
     companion object {
         fun newInstance() = LoginFragment()
@@ -26,7 +31,26 @@ class LoginFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProviders.of(this).get(LoginViewModel::class.java)
-        // TODO: Use the ViewModel
+
+        viewModel.loginListener = this
+
+        btnLogin.onClick {
+            viewModel.loginUser("${etUsername.text}","${etPassword.text}")
+        }
+    }
+
+    override fun onStarted() {
+        pbLogin.show()
+    }
+
+    override fun onSuccess(message: String) {
+        pbLogin.hide()
+        activity?.toast(message)
+    }
+
+    override fun onFailured(message: String) {
+        pbLogin.hide()
+        activity?.toast(message)
     }
 
 }
