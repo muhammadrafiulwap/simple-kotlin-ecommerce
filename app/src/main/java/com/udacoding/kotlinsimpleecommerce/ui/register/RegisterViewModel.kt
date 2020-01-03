@@ -3,11 +3,11 @@ package com.udacoding.kotlinsimpleecommerce.ui.register
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.udacoding.kotlinsimpleecommerce.Model.Register.ResponseRegister
-import com.udacoding.kotlinsimpleecommerce.Repository.RegisterRepository
+import com.udacoding.kotlinsimpleecommerce.Repository.Repository
 
 class RegisterViewModel : ViewModel() {
 
-    private val repository = RegisterRepository()
+    private val repository = Repository()
 
     var registerListener: RegisterListener? = null
 
