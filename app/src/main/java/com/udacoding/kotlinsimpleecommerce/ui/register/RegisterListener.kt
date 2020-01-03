@@ -1,6 +1,6 @@
-package com.udacoding.kotlinsimpleecommerce.ui.login
+package com.udacoding.kotlinsimpleecommerce.ui.register
 
-interface LoginListener {
+interface RegisterListener {
 
     fun onStarted()
     fun onSuccess(message: String)

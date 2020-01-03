@@ -1,6 +1,7 @@
 package com.udacoding.kotlinsimpleecommerce.Network
 
 import com.udacoding.kotlinsimpleecommerce.Model.Login.ResponseLogin
+import com.udacoding.kotlinsimpleecommerce.Model.Register.ResponseRegister
 import io.reactivex.Single
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
@@ -14,5 +15,15 @@ interface ApiService {
         @Field("username") username: String,
         @Field("password") password: String
     ): Single<ResponseLogin>
+
+    @FormUrlEncoded
+    @POST("register")
+    fun register(
+        @Field("username") username: String,
+        @Field("password") password: String,
+        @Field("fullname") fullname: String,
+        @Field("nohp") nohp: String,
+        @Field("alamat") alamat: String
+    ): Single<ResponseRegister>
 
 }
