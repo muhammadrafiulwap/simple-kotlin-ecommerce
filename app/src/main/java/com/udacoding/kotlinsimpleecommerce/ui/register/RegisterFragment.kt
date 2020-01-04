@@ -6,15 +6,18 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.Observer
+import com.udacoding.kotlinsimpleecommerce.Model.Register.ResponseRegister
 import com.udacoding.kotlinsimpleecommerce.R
 import com.udacoding.kotlinsimpleecommerce.Utils.hide
 import com.udacoding.kotlinsimpleecommerce.Utils.show
 import kotlinx.android.synthetic.main.register_fragment.*
 import org.jetbrains.anko.sdk27.coroutines.onClick
 import org.jetbrains.anko.support.v4.startActivity
+import org.jetbrains.anko.support.v4.toast
 import org.jetbrains.anko.toast
 
-class RegisterFragment : Fragment(), RegisterListener {
+class RegisterFragment : Fragment() {
 
     companion object {
         fun newInstance() = RegisterFragment()
@@ -33,27 +36,38 @@ class RegisterFragment : Fragment(), RegisterListener {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProviders.of(this).get(RegisterViewModel::class.java)
 
-        viewModel.registerListener = this
+        attachObserve()
 
         btnRegister.onClick {
-            viewModel.registerUser("${etUsername.text}","${etPassword.text}", "${etFullname.text}","${etNoHp.text}","${etAlamat.text}")
+            viewModel.registerUser(
+                "${etUsername.text}",
+                "${etPassword.text}",
+                "${etFullname.text}",
+                "${etNoHp.text}",
+                "${etAlamat.text}"
+            )
         }
 
     }
 
-    override fun onStarted() {
-        pbRegister.show()
+    private fun attachObserve() {
+        viewModel.responseRegister.observe(this, Observer { showResponse(it) })
+        viewModel.apiError.observe(this, Observer { showError(it) })
+        viewModel.isLoading.observe(this, Observer { showLoading(it) })
+        viewModel.isEmpty.observe(this, Observer { showIsEmpty(it) })
+        viewModel.finish.observe(this, Observer { actionFinish(it) })
+
     }
 
-    override fun onSuccess(message: String) {
-        pbRegister.hide()
-        activity?.toast(message)
-        activity?.finish()
-    }
+    private fun actionFinish(it: Boolean?) = if (it ?: false) activity?.finish() else null
 
-    override fun onFailured(message: String) {
-        pbRegister.hide()
-        activity?.toast(message)
-    }
+    private fun showIsEmpty(it: Boolean?) = if (it ?: true) toast("Register invalid") else null
+
+    private fun showLoading(it: Boolean?) =
+        if (it ?: false) pbRegister.show() else pbRegister.hide()
+
+    private fun showError(it: Throwable?) = toast(it?.message ?: "")
+
+    private fun showResponse(it: ResponseRegister?) = toast(it?.message ?: "")
 
 }

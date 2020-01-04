@@ -8,7 +8,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
 
-class Repository {
+class RepositoryUser {
 
     private val api = NetworkModule.getService()
     private val composite = CompositeDisposable()
@@ -44,23 +44,6 @@ class Repository {
     ) {
         composite.add(
             api.register(username, password, fullname, nohp, alamat)
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe({
-                    responHandler(it)
-                },{
-                    errorHandler(it)
-                })
-        )
-    }
-
-    //getproduk
-    fun getProdukApi(
-        responHandler: (ResponseListProduk)-> Unit,
-        errorHandler: (Throwable)-> Unit
-    ) {
-        composite.add(
-            api.getProduk()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe({
