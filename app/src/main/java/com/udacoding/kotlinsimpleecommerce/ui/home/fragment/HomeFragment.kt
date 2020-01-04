@@ -10,6 +10,7 @@ import androidx.lifecycle.Observer
 import com.udacoding.kotlinsimpleecommerce.Model.ListProduk.ResponseListProduk
 import com.udacoding.kotlinsimpleecommerce.R
 import com.udacoding.kotlinsimpleecommerce.ui.home.HomeViewModel
+import com.udacoding.kotlinsimpleecommerce.ui.home.adapter.ListProdukAdapter
 import com.udacoding.kotlinsimpleecommerce.ui.home.adapter.SliderAdapter
 import kotlinx.android.synthetic.main.home_fragment.*
 
@@ -29,6 +30,7 @@ class HomeFragment : Fragment() {
         viewModel = ViewModelProviders.of(this).get(HomeViewModel::class.java)
 
         viewModel.getListProdukPromo()
+        viewModel.getListProduk()
 
         attachObserve()
 
@@ -36,6 +38,11 @@ class HomeFragment : Fragment() {
 
     private fun attachObserve() {
         viewModel.responProdukPromo.observe(this, Observer { showImageSlider(it) })
+        viewModel.responProduk.observe(this, Observer { showListProduk(it) })
+    }
+
+    private fun showListProduk(it: ResponseListProduk?) {
+        listProduk.adapter = ListProdukAdapter(it?.data)
     }
 
     private fun showImageSlider(it: ResponseListProduk?) {
