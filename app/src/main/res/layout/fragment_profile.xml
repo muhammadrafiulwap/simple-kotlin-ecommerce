@@ -5,10 +5,18 @@
     android:layout_height="match_parent"
     tools:context=".ui.home.fragment.ProfileFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <Button
+        android:id="@+id/btnLogout"
+        android:padding="10dp"
+        android:layout_gravity="bottom"
+        android:text="Logout"
+        android:background="@drawable/bg_button_lightblue"
+        android:textColor="@color/colorBlue"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_marginBottom="5dp"
+        android:textSize="14sp"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_height="wrap_content"/>
 
 </FrameLayout>

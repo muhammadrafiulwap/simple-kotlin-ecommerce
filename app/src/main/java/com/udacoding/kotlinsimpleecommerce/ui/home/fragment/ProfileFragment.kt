@@ -8,8 +8,19 @@ import android.view.View
 import android.view.ViewGroup
 
 import com.udacoding.kotlinsimpleecommerce.R
+import com.udacoding.kotlinsimpleecommerce.Utils.SessionManager
+import com.udacoding.kotlinsimpleecommerce.ui.login.Login
+import kotlinx.android.synthetic.main.fragment_profile.*
+import org.jetbrains.anko.clearTask
+import org.jetbrains.anko.clearTop
+import org.jetbrains.anko.newTask
+import org.jetbrains.anko.sdk27.coroutines.onClick
+import org.jetbrains.anko.support.v4.intentFor
+import org.jetbrains.anko.support.v4.startActivity
 
 class ProfileFragment : Fragment() {
+
+    private var session: SessionManager? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -21,6 +32,14 @@ class ProfileFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+
+        session = SessionManager(context!!)
+
+        btnLogout.onClick {
+            session?.logout()
+            startActivity(intentFor<Login>().clearTop().newTask().clearTask())
+        }
+
     }
 
 

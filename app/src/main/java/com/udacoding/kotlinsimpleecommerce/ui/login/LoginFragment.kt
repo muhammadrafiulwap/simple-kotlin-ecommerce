@@ -46,6 +46,10 @@ class LoginFragment : Fragment() {
 
         session = SessionManager(context!!)
 
+        if (session?.isLogin ?: false){
+            startActivity(intentFor<Home>().clearTop().newTask().clearTask())
+        }
+
         attachObserve()
 
         btnLogin.onClick {
