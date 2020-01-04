@@ -6,8 +6,12 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.Observer
+import com.udacoding.kotlinsimpleecommerce.Model.ListProduk.ResponseListProduk
 import com.udacoding.kotlinsimpleecommerce.R
 import com.udacoding.kotlinsimpleecommerce.ui.home.HomeViewModel
+import com.udacoding.kotlinsimpleecommerce.ui.home.adapter.SliderAdapter
+import kotlinx.android.synthetic.main.home_fragment.*
 
 class HomeFragment : Fragment() {
 
@@ -23,7 +27,18 @@ class HomeFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProviders.of(this).get(HomeViewModel::class.java)
-        // TODO: Use the ViewModel
+
+        viewModel.getListProdukPromo()
+
+        attachObserve()
+
     }
 
+    private fun attachObserve() {
+        viewModel.responProdukPromo.observe(this, Observer { showImageSlider(it) })
+    }
+
+    private fun showImageSlider(it: ResponseListProduk?) {
+        imageSlider.sliderAdapter = SliderAdapter(it?.data)
+    }
 }

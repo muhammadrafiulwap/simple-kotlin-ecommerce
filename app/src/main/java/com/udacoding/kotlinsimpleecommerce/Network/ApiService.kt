@@ -32,4 +32,7 @@ interface ApiService {
     @GET("getProduk")
     fun getProduk(): Observable<ResponseListProduk>
 
+    @GET("getProdukPromo")
+    fun getProdukPromo(): Observable<ResponseListProduk>
+
 }

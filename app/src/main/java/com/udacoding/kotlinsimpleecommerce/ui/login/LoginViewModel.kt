@@ -18,8 +18,6 @@ class LoginViewModel : ViewModel() {
 
     var isEmpty = MutableLiveData<Boolean>()
 
-    var finihActivity = MutableLiveData<Boolean>()
-
     fun loginUser(username: String, password: String) {
         isLoading.value = true
         if (username.isNotEmpty() && password.isNotEmpty()) {

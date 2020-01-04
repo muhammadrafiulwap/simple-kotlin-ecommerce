@@ -10,7 +10,7 @@
         android:padding="10dp"
         android:layout_gravity="bottom"
         android:text="Logout"
-        android:background="@drawable/bg_button_lightblue"
+        android:background="@drawable/bg_button_border_lightblue"
         android:textColor="@color/colorBlue"
         android:layout_width="match_parent"
         android:layout_marginBottom="5dp"

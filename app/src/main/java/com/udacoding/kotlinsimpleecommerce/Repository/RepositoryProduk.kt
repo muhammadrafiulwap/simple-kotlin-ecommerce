@@ -27,4 +27,21 @@ class RepositoryProduk {
                 })
         )
     }
+
+    //getproduk
+    fun getProdukPromoApi(
+        responHandler: (ResponseListProduk)-> Unit,
+        errorHandler: (Throwable)-> Unit
+    ) {
+        composite.add(
+            api.getProdukPromo()
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe({
+                    responHandler(it)
+                },{
+                    errorHandler(it)
+                })
+        )
+    }
 }

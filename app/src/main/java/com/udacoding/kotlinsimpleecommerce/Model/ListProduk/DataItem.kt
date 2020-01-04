@@ -22,6 +22,9 @@ data class DataItem(
 	@field:SerializedName("stok")
 	val stok: String? = null,
 
+	@field:SerializedName("promo")
+	val promo: String? = null,
+
 	@field:SerializedName("gambar")
 	val gambar: String? = null
 )
