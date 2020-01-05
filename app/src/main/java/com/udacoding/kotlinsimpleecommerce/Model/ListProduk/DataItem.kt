@@ -16,6 +16,9 @@ data class DataItem(
 	@field:SerializedName("kategori")
 	val kategori: String? = null,
 
+	@field:SerializedName("deskripsi")
+	val deskripsi: String? = null,
+
 	@field:SerializedName("created_at")
 	val createdAt: String? = null,
 

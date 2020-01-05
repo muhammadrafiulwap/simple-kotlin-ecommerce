@@ -2,19 +2,26 @@ package com.udacoding.kotlinsimpleecommerce.ui.home.fragment
 
 import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.lifecycle.Observer
 import com.udacoding.kotlinsimpleecommerce.Model.ListKategori.ResponseKategori
+import com.udacoding.kotlinsimpleecommerce.Model.ListProduk.DataItem
 import com.udacoding.kotlinsimpleecommerce.Model.ListProduk.ResponseListProduk
 import com.udacoding.kotlinsimpleecommerce.R
+import com.udacoding.kotlinsimpleecommerce.ui.detailproduk.DetailProduk
 import com.udacoding.kotlinsimpleecommerce.ui.home.HomeViewModel
 import com.udacoding.kotlinsimpleecommerce.ui.home.adapter.ListKategoriAdapter
 import com.udacoding.kotlinsimpleecommerce.ui.home.adapter.ListProdukAdapter
 import com.udacoding.kotlinsimpleecommerce.ui.home.adapter.SliderAdapter
 import kotlinx.android.synthetic.main.home_fragment.*
+import org.jetbrains.anko.support.v4.startActivity
+import org.jetbrains.anko.support.v4.toast
+import org.jetbrains.anko.toast
 
 class HomeFragment : Fragment() {
 
@@ -43,6 +50,12 @@ class HomeFragment : Fragment() {
         viewModel.responProdukPromo.observe(this, Observer { showImageSlider(it) })
         viewModel.responProduk.observe(this, Observer { showListProduk(it) })
         viewModel.responKategori.observe(this, Observer { showListKategori(it) })
+
+        viewModel.errorApi.observe(this, Observer { showError(it) })
+    }
+
+    private fun showError(it: Throwable?) {
+        Log.d("ERROR",it?.message ?: "")
     }
 
     private fun showListKategori(it: ResponseKategori?) {
@@ -50,7 +63,15 @@ class HomeFragment : Fragment() {
     }
 
     private fun showListProduk(it: ResponseListProduk?) {
-        listProduk.adapter = ListProdukAdapter(it?.data)
+        listProduk.adapter = ListProdukAdapter(it?.data, object: ListProdukAdapter.onItemClickListener {
+            override fun itemClick(item: DataItem?) {
+                startActivity<DetailProduk>(
+                    "nama" to item?.nama,
+                    "deskripsi" to item?.deskripsi,
+                    "harga" to item?.harga,
+                    "gambar" to item?.gambar)
+            }
+        })
     }
 
     private fun showImageSlider(it: ResponseListProduk?) {

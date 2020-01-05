@@ -8,9 +8,11 @@ import com.bumptech.glide.Glide
 import com.udacoding.kotlinsimpleecommerce.Model.ListProduk.DataItem
 import com.udacoding.kotlinsimpleecommerce.R
 import com.udacoding.kotlinsimpleecommerce.Utils.Constan
+import com.udacoding.kotlinsimpleecommerce.Utils.formatToRupiah
 import kotlinx.android.synthetic.main.item_produk.view.*
+import org.jetbrains.anko.sdk27.coroutines.onClick
 
-class ListProdukAdapter(private var mValues: List<DataItem>?) :
+class ListProdukAdapter(private var mValues: List<DataItem>?, private var listener: onItemClickListener) :
     RecyclerView.Adapter<ListProdukAdapter.ViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val viewHolder = ViewHolder(
@@ -29,9 +31,13 @@ class ListProdukAdapter(private var mValues: List<DataItem>?) :
         val item = mValues?.get(position)
 
         holder.mNama.text = item?.nama
-        holder.mHarga.text = item?.harga
+        holder.mHarga.text = formatToRupiah(item?.harga ?: "")
         holder.mJenis.text = item?.kategori
         Glide.with(holder.mImage).load(Constan.IMAGE_URL + item?.gambar).into(holder.mImage)
+
+        holder.view.onClick {
+            listener.itemClick(item)
+        }
 
     }
 
@@ -45,5 +51,9 @@ class ListProdukAdapter(private var mValues: List<DataItem>?) :
         val mHarga = view.tvHarga
         val mJenis = view.tvJenis
 
+    }
+
+    interface onItemClickListener {
+        fun itemClick(item: DataItem?)
     }
 }

@@ -18,6 +18,8 @@ class HomeViewModel : ViewModel() {
     var responKategori = MutableLiveData<ResponseKategori>()
 
     var errorApi = MutableLiveData<Throwable>()
+//    var errorApiProdukPromo = MutableLiveData<Throwable>()
+//    var errorApiKategori = MutableLiveData<Throwable>()
 
     var isLoading = MutableLiveData<Boolean>()
 
