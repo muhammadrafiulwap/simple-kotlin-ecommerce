@@ -7,9 +7,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
+import com.udacoding.kotlinsimpleecommerce.Model.ListKategori.ResponseKategori
 import com.udacoding.kotlinsimpleecommerce.Model.ListProduk.ResponseListProduk
 import com.udacoding.kotlinsimpleecommerce.R
 import com.udacoding.kotlinsimpleecommerce.ui.home.HomeViewModel
+import com.udacoding.kotlinsimpleecommerce.ui.home.adapter.ListKategoriAdapter
 import com.udacoding.kotlinsimpleecommerce.ui.home.adapter.ListProdukAdapter
 import com.udacoding.kotlinsimpleecommerce.ui.home.adapter.SliderAdapter
 import kotlinx.android.synthetic.main.home_fragment.*
@@ -31,6 +33,7 @@ class HomeFragment : Fragment() {
 
         viewModel.getListProdukPromo()
         viewModel.getListProduk()
+        viewModel.getListKategori()
 
         attachObserve()
 
@@ -39,6 +42,11 @@ class HomeFragment : Fragment() {
     private fun attachObserve() {
         viewModel.responProdukPromo.observe(this, Observer { showImageSlider(it) })
         viewModel.responProduk.observe(this, Observer { showListProduk(it) })
+        viewModel.responKategori.observe(this, Observer { showListKategori(it) })
+    }
+
+    private fun showListKategori(it: ResponseKategori?) {
+        listKategori.adapter = ListKategoriAdapter(it?.data)
     }
 
     private fun showListProduk(it: ResponseListProduk?) {

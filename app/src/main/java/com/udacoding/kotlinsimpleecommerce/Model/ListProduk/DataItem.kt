@@ -10,8 +10,11 @@ data class DataItem(
 	@field:SerializedName("harga")
 	val harga: String? = null,
 
-	@field:SerializedName("jenis")
-	val jenis: String? = null,
+	@field:SerializedName("id_kategori")
+	val id_kategori: String? = null,
+
+	@field:SerializedName("kategori")
+	val kategori: String? = null,
 
 	@field:SerializedName("created_at")
 	val createdAt: String? = null,

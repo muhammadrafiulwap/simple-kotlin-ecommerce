@@ -16,8 +16,6 @@ import kotlinx.android.synthetic.main.home_fragment.*
 
 class Home : AppCompatActivity() {
 
-
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.home_activity)

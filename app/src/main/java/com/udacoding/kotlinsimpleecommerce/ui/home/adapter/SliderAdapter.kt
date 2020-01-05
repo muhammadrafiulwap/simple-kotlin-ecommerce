@@ -19,7 +19,7 @@ class SliderAdapter (private val mValues: List<DataItem>?) : SliderViewAdapter<S
     override fun onBindViewHolder(viewHolder: ViewHolder?, position: Int) {
         val item = mValues?.get(position)
 
-        viewHolder?.mText?.text = item?.nama
+       // viewHolder?.mText?.text = item?.nama
         Glide.with(viewHolder?.mImage!!).load(Constan.IMAGE_URL+item?.gambar).into(viewHolder.mImage)
     }
 
@@ -31,7 +31,7 @@ class SliderAdapter (private val mValues: List<DataItem>?) : SliderViewAdapter<S
         val mView = view
 
         val mImage = view.iv_auto_image_slider
-        val mText = view.tv_auto_image_slider
+        //val mText = view.tv_auto_image_slider
 
 
     }

@@ -16,7 +16,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom">
 
-        <TextView
+       <!-- <TextView
             android:id="@+id/tv_auto_image_slider"
             android:layout_width="wrap_content"
             android:layout_marginLeft="20dp"
@@ -26,7 +26,7 @@
             android:layout_marginBottom="35dp"
             android:padding="10dp"
             android:textColor="#000"
-            android:textSize="12sp" />
+            android:textSize="12sp" />-->
 
     </FrameLayout>
 

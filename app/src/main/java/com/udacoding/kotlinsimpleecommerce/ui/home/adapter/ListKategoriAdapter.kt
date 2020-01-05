@@ -5,17 +5,17 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.udacoding.kotlinsimpleecommerce.Model.ListProduk.DataItem
+import com.udacoding.kotlinsimpleecommerce.Model.ListKategori.DataItem
 import com.udacoding.kotlinsimpleecommerce.R
 import com.udacoding.kotlinsimpleecommerce.Utils.Constan
-import kotlinx.android.synthetic.main.item_produk.view.*
+import kotlinx.android.synthetic.main.item_kategori.view.*
 
-class ListProdukAdapter(private var mValues: List<DataItem>?) :
-    RecyclerView.Adapter<ListProdukAdapter.ViewHolder>() {
+class ListKategoriAdapter(private var mValues: List<DataItem>?) :
+    RecyclerView.Adapter<ListKategoriAdapter.ViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val viewHolder = ViewHolder(
             LayoutInflater.from(parent.context).inflate(
-                R.layout.item_produk,
+                R.layout.item_kategori,
                 parent,
                 false
             )
@@ -28,9 +28,7 @@ class ListProdukAdapter(private var mValues: List<DataItem>?) :
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = mValues?.get(position)
 
-        holder.mNama.text = item?.nama
-        holder.mHarga.text = item?.harga
-        holder.mJenis.text = item?.kategori
+        holder.mKategori.text = item?.kategori
         Glide.with(holder.mImage).load(Constan.IMAGE_URL + item?.gambar).into(holder.mImage)
 
     }
@@ -40,10 +38,8 @@ class ListProdukAdapter(private var mValues: List<DataItem>?) :
 
         val view = view
 
-        val mImage = view.ivProduk
-        val mNama = view.tvNama
-        val mHarga = view.tvHarga
-        val mJenis = view.tvJenis
+        val mImage = view.ivKategori
+        val mKategori = view.tvKategori
 
     }
 }

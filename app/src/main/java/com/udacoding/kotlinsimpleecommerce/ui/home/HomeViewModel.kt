@@ -2,6 +2,7 @@ package com.udacoding.kotlinsimpleecommerce.ui.home
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.udacoding.kotlinsimpleecommerce.Model.ListKategori.ResponseKategori
 import com.udacoding.kotlinsimpleecommerce.Model.ListProduk.ResponseListProduk
 import com.udacoding.kotlinsimpleecommerce.Repository.RepositoryProduk
 
@@ -13,6 +14,8 @@ class HomeViewModel : ViewModel() {
     var responProduk = MutableLiveData<ResponseListProduk>()
 
     var responProdukPromo = MutableLiveData<ResponseListProduk>()
+
+    var responKategori = MutableLiveData<ResponseKategori>()
 
     var errorApi = MutableLiveData<Throwable>()
 
@@ -43,4 +46,18 @@ class HomeViewModel : ViewModel() {
             }
         )
     }
+
+    fun getListKategori(){
+        isLoading.value = true
+        repository.getKategoriApi(
+            {
+                responKategori.value = it
+                isLoading.value = false
+            }, {
+                errorApi.value = it
+                isLoading.value = false
+            }
+        )
+    }
+
 }

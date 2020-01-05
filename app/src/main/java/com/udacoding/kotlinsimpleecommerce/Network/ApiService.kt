@@ -1,5 +1,6 @@
 package com.udacoding.kotlinsimpleecommerce.Network
 
+import com.udacoding.kotlinsimpleecommerce.Model.ListKategori.ResponseKategori
 import com.udacoding.kotlinsimpleecommerce.Model.ListProduk.ResponseListProduk
 import com.udacoding.kotlinsimpleecommerce.Model.Login.ResponseLogin
 import com.udacoding.kotlinsimpleecommerce.Model.Register.ResponseRegister
@@ -34,5 +35,8 @@ interface ApiService {
 
     @GET("getProdukPromo")
     fun getProdukPromo(): Observable<ResponseListProduk>
+
+    @GET("getKategori")
+    fun getKategori(): Observable<ResponseKategori>
 
 }
