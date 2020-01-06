@@ -36,6 +36,12 @@ interface ApiService {
     @GET("getProdukPromo")
     fun getProdukPromo(): Observable<ResponseListProduk>
 
+    @FormUrlEncoded
+    @POST("getProdukByKategori")
+    fun getProdukByKategori(
+        @Field("id_kategori") id_kategori: String
+    ): Observable<ResponseListProduk>
+
     @GET("getKategori")
     fun getKategori(): Observable<ResponseKategori>
 

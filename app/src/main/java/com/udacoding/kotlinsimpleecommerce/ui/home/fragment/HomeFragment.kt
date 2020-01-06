@@ -18,6 +18,7 @@ import com.udacoding.kotlinsimpleecommerce.ui.home.HomeViewModel
 import com.udacoding.kotlinsimpleecommerce.ui.home.adapter.ListKategoriAdapter
 import com.udacoding.kotlinsimpleecommerce.ui.home.adapter.ListProdukAdapter
 import com.udacoding.kotlinsimpleecommerce.ui.home.adapter.SliderAdapter
+import com.udacoding.kotlinsimpleecommerce.ui.produkbykategori.ProdukByKategori
 import kotlinx.android.synthetic.main.home_fragment.*
 import org.jetbrains.anko.support.v4.startActivity
 import org.jetbrains.anko.support.v4.toast
@@ -59,13 +60,21 @@ class HomeFragment : Fragment() {
     }
 
     private fun showListKategori(it: ResponseKategori?) {
-        listKategori.adapter = ListKategoriAdapter(it?.data)
+        listKategori.adapter = ListKategoriAdapter(it?.data, object: ListKategoriAdapter.onItemClickListener {
+            override fun itemClick(id: String) {
+                startActivity<ProdukByKategori>(
+                    "id_kategori" to id
+                )
+            }
+
+        })
     }
 
     private fun showListProduk(it: ResponseListProduk?) {
         listProduk.adapter = ListProdukAdapter(it?.data, object: ListProdukAdapter.onItemClickListener {
             override fun itemClick(item: DataItem?) {
                 startActivity<DetailProduk>(
+                    "id" to item?.id,
                     "nama" to item?.nama,
                     "deskripsi" to item?.deskripsi,
                     "harga" to item?.harga,

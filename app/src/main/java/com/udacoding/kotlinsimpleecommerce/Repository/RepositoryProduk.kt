@@ -63,4 +63,22 @@ class RepositoryProduk {
         )
     }
 
+    //getprodukbykategori
+    fun getProdukByKategoriApi(
+        id_kategori: String,
+        responHandler: (ResponseListProduk)-> Unit,
+        errorHandler: (Throwable)-> Unit
+    ) {
+        composite.add(
+            api.getProdukByKategori(id_kategori)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe({
+                    responHandler(it)
+                },{
+                    errorHandler(it)
+                })
+        )
+    }
+
 }

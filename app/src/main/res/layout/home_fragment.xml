@@ -15,9 +15,9 @@
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginRight="10dp"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="5dp"
+            android:layout_marginRight="10dp"
             android:layout_marginBottom="5dp"
             app:cardCornerRadius="6dp">
 
@@ -42,13 +42,13 @@
         </androidx.cardview.widget.CardView>
 
         <TextView
-            android:text="Kategori"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
             android:layout_marginTop="5dp"
+            android:text="Kategori"
             android:textColor="#000"
-            android:textSize="14sp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:textSize="14sp" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/listKategori"
@@ -60,14 +60,26 @@
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             tools:listitem="@layout/item_kategori" />
 
+        <!--<com.cooltechworks.views.shimmer.ShimmerRecyclerView
+            android:id="@+id/listKategori"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:scrollbars="horizontal"
+            app:shimmer_demo_angle="20"
+            app:shimmer_demo_layout="@layout/item_kategori_shimmer"
+            app:shimmer_demo_layout_manager_type="linear_horizontal"
+            tools:listitem="@layout/item_kategori_shimmer" />-->
+
         <TextView
-            android:text="Produk terbaru"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
             android:layout_marginTop="5dp"
+            android:text="Produk terbaru"
             android:textColor="#000"
-            android:textSize="14sp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:textSize="14sp" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/listProduk"
@@ -78,6 +90,24 @@
             android:orientation="horizontal"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             tools:listitem="@layout/item_produk" />
+
+     <!--   <ScrollView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:scrollbars="horizontal">
+
+            <com.cooltechworks.views.shimmer.ShimmerRecyclerView
+                android:id="@+id/listProduk"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:nestedScrollingEnabled="false"
+                app:shimmer_demo_angle="20"
+                app:shimmer_demo_layout="@layout/item_produk_shimmer"
+                app:shimmer_demo_layout_manager_type="linear_horizontal"
+                tools:listitem="@layout/item_produk_shimmer" />
+        </ScrollView>-->
 
     </LinearLayout>
 </androidx.core.widget.NestedScrollView>

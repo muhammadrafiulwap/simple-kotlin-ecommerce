@@ -1,22 +1,23 @@
-package com.udacoding.kotlinsimpleecommerce.ui.home.adapter
+package com.udacoding.kotlinsimpleecommerce.ui.produkbykategori.adapter
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.udacoding.kotlinsimpleecommerce.Model.ListKategori.DataItem
+import com.udacoding.kotlinsimpleecommerce.Model.ListProduk.DataItem
 import com.udacoding.kotlinsimpleecommerce.R
 import com.udacoding.kotlinsimpleecommerce.Utils.Constan
-import kotlinx.android.synthetic.main.item_kategori.view.*
+import com.udacoding.kotlinsimpleecommerce.Utils.formatToRupiah
+import kotlinx.android.synthetic.main.item_produk_kategori.view.*
 import org.jetbrains.anko.sdk27.coroutines.onClick
 
-class ListKategoriAdapter(private val mValues: List<DataItem>?, private val listener: onItemClickListener) :
-    RecyclerView.Adapter<ListKategoriAdapter.ViewHolder>() {
+class ListProdukByKategoriAdapter(private var mValues: List<DataItem>?, private var listener: onItemClickListener) :
+    RecyclerView.Adapter<ListProdukByKategoriAdapter.ViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val viewHolder = ViewHolder(
             LayoutInflater.from(parent.context).inflate(
-                R.layout.item_kategori,
+                R.layout.item_produk_kategori,
                 parent,
                 false
             )
@@ -29,24 +30,27 @@ class ListKategoriAdapter(private val mValues: List<DataItem>?, private val list
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = mValues?.get(position)
 
-        holder.mKategori.text = item?.kategori
+        holder.mNama.text = item?.nama
+        holder.mHarga.text = formatToRupiah(item?.harga ?: "")
+        holder.mJenis.text = item?.kategori
         Glide.with(holder.mImage).load(Constan.IMAGE_URL + item?.gambar).into(holder.mImage)
 
         holder.view.onClick {
-            listener.itemClick(item?.id ?: "")
+            listener.itemClick(item)
         }
 
     }
 
-
     inner class ViewHolder(val view: View) : RecyclerView.ViewHolder(view) {
 
-        val mImage = view.ivKategori
-        val mKategori = view.tvKategori
+        val mImage = view.ivProduk
+        val mNama = view.tvNama
+        val mHarga = view.tvHarga
+        val mJenis = view.tvJenis
 
     }
 
     interface onItemClickListener {
-        fun itemClick(id: String)
+        fun itemClick(item: DataItem?)
     }
 }
