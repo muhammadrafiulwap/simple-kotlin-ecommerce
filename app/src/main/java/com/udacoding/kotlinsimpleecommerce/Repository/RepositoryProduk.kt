@@ -1,6 +1,9 @@
 package com.udacoding.kotlinsimpleecommerce.Repository
 
+import androidx.lifecycle.LiveData
+import com.udacoding.kotlinsimpleecommerce.Model.AddKeranjang.ResponseAddKeranjang
 import com.udacoding.kotlinsimpleecommerce.Model.ListKategori.ResponseKategori
+import com.udacoding.kotlinsimpleecommerce.Model.ListKeranjang.ResponseListKeranjang
 import com.udacoding.kotlinsimpleecommerce.Model.ListProduk.ResponseListProduk
 import com.udacoding.kotlinsimpleecommerce.Network.NetworkModule
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -11,6 +14,14 @@ class RepositoryProduk {
 
     private val api = NetworkModule.getService()
     private val composite = CompositeDisposable()
+
+    private lateinit var produkResult: LiveData<ResponseListProduk>
+
+
+    fun Produk(): LiveData<ResponseListProduk>{
+        return produkResult
+    }
+
 
     //getproduk
     fun getProdukApi(
@@ -80,5 +91,44 @@ class RepositoryProduk {
                 })
         )
     }
+
+    //getlistkeranjang
+    fun getListKeranjangApi(
+        responHandler: (ResponseListKeranjang)-> Unit,
+        errorHandler: (Throwable)-> Unit
+    ) {
+        composite.add(
+            api.getKeranjang()
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe({
+                    responHandler(it)
+                },{
+                    errorHandler(it)
+                })
+        )
+    }
+
+    //addkeranjang
+    fun addKeranjangApi(
+        id_user: String,
+        id_produk: String,
+        responHandler: (ResponseAddKeranjang)-> Unit,
+        errorHandler: (Throwable)-> Unit
+    ) {
+        composite.add(
+            api.addKeranjang(id_user, id_produk)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe({
+                    responHandler(it)
+                },{
+                    errorHandler(it)
+                })
+        )
+    }
+
+
+
 
 }

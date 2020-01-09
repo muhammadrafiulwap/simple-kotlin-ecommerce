@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/login"
     android:layout_width="match_parent"
@@ -9,20 +10,20 @@
 
     <LinearLayout
         android:layout_width="250dp"
-        android:layout_marginTop="50dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
         android:orientation="vertical">
 
         <EditText
             android:id="@+id/etUsername"
             android:layout_width="match_parent"
             android:layout_height="45dp"
-            android:background="@drawable/bg_edittext"
             android:layout_marginTop="20dp"
+            android:background="@drawable/bg_edittext"
             android:hint="Username"
+            android:paddingLeft="10dp"
             android:singleLine="true"
-            android:textSize="14sp"
-            android:paddingLeft="10dp" />
+            android:textSize="14sp" />
 
         <EditText
             android:id="@+id/etPassword"
@@ -31,63 +32,70 @@
             android:layout_marginTop="20dp"
             android:background="@drawable/bg_edittext"
             android:hint="Password"
-            android:textSize="14sp"
             android:inputType="textPassword"
-            android:paddingLeft="10dp" />
+            android:paddingLeft="10dp"
+            android:textSize="14sp" />
 
         <EditText
             android:id="@+id/etFullname"
             android:layout_width="match_parent"
             android:layout_height="45dp"
-            android:background="@drawable/bg_edittext"
             android:layout_marginTop="20dp"
+            android:background="@drawable/bg_edittext"
             android:hint="Fullname"
+            android:paddingLeft="10dp"
             android:singleLine="true"
-            android:textSize="14sp"
-            android:paddingLeft="10dp" />
+            android:textSize="14sp" />
 
         <EditText
             android:id="@+id/etNoHp"
             android:layout_width="match_parent"
             android:layout_height="45dp"
-            android:background="@drawable/bg_edittext"
             android:layout_marginTop="20dp"
+            android:background="@drawable/bg_edittext"
             android:hint="No HP"
             android:inputType="phone"
-            android:textSize="14sp"
-            android:paddingLeft="10dp" />
+            android:paddingLeft="10dp"
+            android:textSize="14sp" />
 
         <EditText
             android:id="@+id/etAlamat"
             android:layout_width="match_parent"
             android:layout_height="100dp"
-            android:background="@drawable/bg_edittext"
             android:layout_marginTop="20dp"
+            android:background="@drawable/bg_edittext"
             android:gravity="start"
-            android:paddingTop="10dp"
             android:hint="Alamat"
-            android:textSize="14sp"
-            android:paddingLeft="10dp" />
+            android:paddingLeft="10dp"
+            android:paddingTop="10dp"
+            android:textSize="14sp" />
 
         <ProgressBar
             android:id="@+id/pbRegister"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="20dp"
-            android:visibility="gone"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:visibility="gone" />
 
 
-        <Button
-            android:id="@+id/btnRegister"
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cvRegister"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
-            android:background="@drawable/bg_button_blue"
-            android:text="Register"
-            android:textColor="#FFF"
-            android:textAllCaps="false"
-            android:textSize="14sp" />
+            android:backgroundTint="@color/colorPrimaryDark"
+            app:cardCornerRadius="10dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="15dp"
+                android:text="Register"
+                android:textColor="#FFF"
+                android:textSize="14sp" />
+        </androidx.cardview.widget.CardView>
 
     </LinearLayout>
 

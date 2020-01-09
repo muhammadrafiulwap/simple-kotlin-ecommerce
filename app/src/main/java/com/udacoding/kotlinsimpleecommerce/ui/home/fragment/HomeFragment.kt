@@ -61,11 +61,13 @@ class HomeFragment : Fragment() {
 
     private fun showListKategori(it: ResponseKategori?) {
         listKategori.adapter = ListKategoriAdapter(it?.data, object: ListKategoriAdapter.onItemClickListener {
-            override fun itemClick(id: String) {
+            override fun itemClick(item: com.udacoding.kotlinsimpleecommerce.Model.ListKategori.DataItem?) {
                 startActivity<ProdukByKategori>(
-                    "id_kategori" to id
+                    "id_kategori" to item?.id,
+                    "kategori" to item?.kategori
                 )
             }
+
 
         })
     }

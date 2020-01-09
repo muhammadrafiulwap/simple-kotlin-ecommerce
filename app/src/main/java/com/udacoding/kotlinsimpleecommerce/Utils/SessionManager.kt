@@ -44,6 +44,13 @@ class SessionManager (internal val context: Context) {
     val isLogin: Boolean
         get() = pref.getBoolean(KEY_LOGIN, false)
 
+    var iduser: String?
+        get() = pref.getString("iduser", "")
+        set(value) {
+            editor.putString("iduser", value)
+            editor.commit()
+        }
+
     var fullname: String?
         get() = pref.getString("fullname", "")
         set(value) {

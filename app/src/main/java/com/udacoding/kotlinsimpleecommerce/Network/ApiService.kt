@@ -1,6 +1,8 @@
 package com.udacoding.kotlinsimpleecommerce.Network
 
+import com.udacoding.kotlinsimpleecommerce.Model.AddKeranjang.ResponseAddKeranjang
 import com.udacoding.kotlinsimpleecommerce.Model.ListKategori.ResponseKategori
+import com.udacoding.kotlinsimpleecommerce.Model.ListKeranjang.ResponseListKeranjang
 import com.udacoding.kotlinsimpleecommerce.Model.ListProduk.ResponseListProduk
 import com.udacoding.kotlinsimpleecommerce.Model.Login.ResponseLogin
 import com.udacoding.kotlinsimpleecommerce.Model.Register.ResponseRegister
@@ -32,6 +34,16 @@ interface ApiService {
 
     @GET("getProduk")
     fun getProduk(): Observable<ResponseListProduk>
+
+    @GET("getKeranjang")
+    fun getKeranjang(): Observable<ResponseListKeranjang>
+
+    @FormUrlEncoded
+    @POST("addKeranjang")
+    fun addKeranjang(
+        @Field("iduser") id_user: String,
+        @Field("idproduk") id_produk: String
+    ): Single<ResponseAddKeranjang>
 
     @GET("getProdukPromo")
     fun getProdukPromo(): Observable<ResponseListProduk>

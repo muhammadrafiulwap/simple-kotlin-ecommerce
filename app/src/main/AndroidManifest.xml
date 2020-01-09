@@ -13,7 +13,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="AllowBackup,GoogleAppIndexingWarning">
-        <activity android:name=".ui.produkbykategori.ProdukByKategori"></activity>
+        <activity android:name=".ui.keranjang.keranjang"></activity>
+        <activity android:name=".ui.produkbykategori.ProdukByKategori" />
         <activity android:name=".ui.detailproduk.DetailProduk" />
         <activity android:name=".ui.home.Home" />
         <activity android:name=".ui.register.Register" />

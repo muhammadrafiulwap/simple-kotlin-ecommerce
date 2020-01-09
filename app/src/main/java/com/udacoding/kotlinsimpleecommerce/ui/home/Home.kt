@@ -11,6 +11,7 @@ import com.udacoding.kotlinsimpleecommerce.R
 import com.udacoding.kotlinsimpleecommerce.ui.home.adapter.SliderAdapter
 import com.udacoding.kotlinsimpleecommerce.ui.home.fragment.HomeFragment
 import com.udacoding.kotlinsimpleecommerce.ui.home.fragment.ProfileFragment
+import com.udacoding.kotlinsimpleecommerce.ui.keranjang.KeranjangFragment
 import kotlinx.android.synthetic.main.home_activity.*
 import kotlinx.android.synthetic.main.home_fragment.*
 
@@ -32,14 +33,17 @@ class Home : AppCompatActivity() {
             R.id.menu_home -> {
                 val fragment = HomeFragment()
                 addFragment(fragment)
-                actionBar?.title = "Home"
+                return@OnNavigationItemSelectedListener true
+            }
+            R.id.menu_cart -> {
+                val fragment = KeranjangFragment()
+                addFragment(fragment)
                 return@OnNavigationItemSelectedListener true
             }
             R.id.menu_profile -> {
                 val fragment =
                     ProfileFragment()
                 addFragment(fragment)
-                actionBar?.title = "Profile"
                 return@OnNavigationItemSelectedListener true
             }
         }

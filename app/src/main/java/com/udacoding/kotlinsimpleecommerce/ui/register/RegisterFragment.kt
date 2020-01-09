@@ -38,7 +38,7 @@ class RegisterFragment : Fragment() {
 
         attachObserve()
 
-        btnRegister.onClick {
+        cvRegister.onClick {
             viewModel.registerUser(
                 "${etUsername.text}",
                 "${etPassword.text}",
