@@ -14,12 +14,17 @@ class ProdukByKategoriViewModel : ViewModel() {
 
     val errorApi = MutableLiveData<Throwable>()
 
+    val isLoading = MutableLiveData<Boolean>()
+
     fun getListProdukByKategori(id_kategori: String){
+        isLoading.value = true
         repository.getProdukByKategoriApi(
             id_kategori, {
                 responProduk.value = it
+                isLoading.value = false
             }, {
                 errorApi.value = it
+                isLoading.value = false
             }
         )
     }

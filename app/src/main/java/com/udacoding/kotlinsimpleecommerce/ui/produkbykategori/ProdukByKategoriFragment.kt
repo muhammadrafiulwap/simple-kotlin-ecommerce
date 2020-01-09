@@ -10,6 +10,8 @@ import androidx.lifecycle.Observer
 import com.udacoding.kotlinsimpleecommerce.Model.ListProduk.DataItem
 import com.udacoding.kotlinsimpleecommerce.Model.ListProduk.ResponseListProduk
 import com.udacoding.kotlinsimpleecommerce.R
+import com.udacoding.kotlinsimpleecommerce.Utils.hide
+import com.udacoding.kotlinsimpleecommerce.Utils.show
 import com.udacoding.kotlinsimpleecommerce.ui.detailproduk.DetailProduk
 import com.udacoding.kotlinsimpleecommerce.ui.produkbykategori.adapter.ListProdukByKategoriAdapter
 import kotlinx.android.synthetic.main.produk_by_kategori_fragment.*
@@ -43,6 +45,15 @@ class ProdukByKategoriFragment : Fragment() {
 
     private fun attachObserve() {
         viewModel.responProduk.observe(this, Observer { showProduk(it) })
+        viewModel.isLoading.observe(this, Observer { showLoading(it) })
+    }
+
+    private fun showLoading(it: Boolean?) {
+        if (it ?: false){
+            pbKategori.show()
+        } else {
+            pbKategori.hide()
+        }
     }
 
     private fun showProduk(it: ResponseListProduk?) {

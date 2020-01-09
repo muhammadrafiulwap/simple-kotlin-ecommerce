@@ -14,12 +14,17 @@ class KeranjangViewModel : ViewModel() {
 
     var apiError = MutableLiveData<Throwable>()
 
+    var isLoading = MutableLiveData<Boolean>()
+
     fun showKeranjang(){
+        isLoading.value = true
         repository.getListKeranjangApi(
             {
                 responKeranjang.value = it
+                isLoading.value = false
             }, {
                 apiError.value = it
+                isLoading.value = false
             }
         )
     }

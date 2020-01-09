@@ -13,6 +13,8 @@ import com.udacoding.kotlinsimpleecommerce.Model.ListKategori.ResponseKategori
 import com.udacoding.kotlinsimpleecommerce.Model.ListProduk.DataItem
 import com.udacoding.kotlinsimpleecommerce.Model.ListProduk.ResponseListProduk
 import com.udacoding.kotlinsimpleecommerce.R
+import com.udacoding.kotlinsimpleecommerce.Utils.hide
+import com.udacoding.kotlinsimpleecommerce.Utils.show
 import com.udacoding.kotlinsimpleecommerce.ui.detailproduk.DetailProduk
 import com.udacoding.kotlinsimpleecommerce.ui.home.HomeViewModel
 import com.udacoding.kotlinsimpleecommerce.ui.home.adapter.ListKategoriAdapter
@@ -51,8 +53,18 @@ class HomeFragment : Fragment() {
         viewModel.responProdukPromo.observe(this, Observer { showImageSlider(it) })
         viewModel.responProduk.observe(this, Observer { showListProduk(it) })
         viewModel.responKategori.observe(this, Observer { showListKategori(it) })
-
+        viewModel.isLoading.observe(this, Observer { showLoading(it) })
         viewModel.errorApi.observe(this, Observer { showError(it) })
+    }
+
+    private fun showLoading(it: Boolean?) {
+        if (it ?: false) {
+            pbKategori.show()
+            pbProduk.show()
+        } else {
+            pbKategori.hide()
+            pbProduk.hide()
+        }
     }
 
     private fun showError(it: Throwable?) {

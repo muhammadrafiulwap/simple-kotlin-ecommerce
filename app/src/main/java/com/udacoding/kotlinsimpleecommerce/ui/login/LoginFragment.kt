@@ -89,11 +89,6 @@ class LoginFragment : Fragment() {
     private fun showLoading(it: Boolean?) = if (it ?: false) pbLogin.show() else pbLogin.hide()
 
     private fun showResponse(it: ResponseLogin?) {
-       // toast(it?.message ?: "")
-
-        alert(it?.message ?: "", "Warning"){
-            yesButton {  }
-        }.show()
 
         if (it?.status ?: false) {
             session?.createLoginSession("1")
@@ -102,6 +97,10 @@ class LoginFragment : Fragment() {
             session?.nohp = it?.data?.nohp
             session?.alamat = it?.data?.alamat
             startActivity(intentFor<Home>().clearTop().newTask().clearTask())
+        } else {
+            alert(it?.message ?: "", "Warning"){
+                yesButton {  }
+            }.show()
         }
     }
 
