@@ -32,6 +32,12 @@ interface ApiService {
         @Field("alamat") alamat: String
     ): Single<ResponseRegister>
 
+    @FormUrlEncoded
+    @POST("search")
+    fun search(
+        @Field("produk") produk: String
+    ): Single<ResponseListProduk>
+
     @GET("getProduk")
     fun getProduk(): Observable<ResponseListProduk>
 

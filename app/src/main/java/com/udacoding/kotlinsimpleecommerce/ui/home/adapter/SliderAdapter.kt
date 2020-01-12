@@ -9,8 +9,9 @@ import com.udacoding.kotlinsimpleecommerce.Model.ListProduk.DataItem
 import com.udacoding.kotlinsimpleecommerce.R
 import com.udacoding.kotlinsimpleecommerce.Utils.Constan
 import kotlinx.android.synthetic.main.item_image_slider.view.*
+import org.jetbrains.anko.sdk27.coroutines.onClick
 
-class SliderAdapter (private val mValues: List<DataItem>?) : SliderViewAdapter<SliderAdapter.ViewHolder>() {
+class SliderAdapter (private val mValues: List<DataItem>?, private val onItemClickListener: OnItemClickListener) : SliderViewAdapter<SliderAdapter.ViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup?): ViewHolder {
         val viewHolder = ViewHolder(LayoutInflater.from(parent?.context).inflate(R.layout.item_image_slider, parent, false))
         return viewHolder
@@ -21,6 +22,10 @@ class SliderAdapter (private val mValues: List<DataItem>?) : SliderViewAdapter<S
 
        // viewHolder?.mText?.text = item?.nama
         Glide.with(viewHolder?.mImage!!).load(Constan.IMAGE_URL+item?.gambar).into(viewHolder.mImage)
+
+        viewHolder.mImage.onClick {
+            onItemClickListener.itemClick(item)
+        }
     }
 
     override fun getCount(): Int = mValues?.size ?: 0
@@ -32,8 +37,10 @@ class SliderAdapter (private val mValues: List<DataItem>?) : SliderViewAdapter<S
 
         val mImage = view.iv_auto_image_slider
         //val mText = view.tv_auto_image_slider
+    }
 
-
+    interface OnItemClickListener {
+        fun itemClick(dataItem: DataItem?)
     }
 
 }

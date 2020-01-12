@@ -8,12 +8,15 @@ import androidx.lifecycle.ViewModelProviders
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.udacoding.kotlinsimpleecommerce.Model.ListProduk.ResponseListProduk
 import com.udacoding.kotlinsimpleecommerce.R
+import com.udacoding.kotlinsimpleecommerce.Search
 import com.udacoding.kotlinsimpleecommerce.ui.home.adapter.SliderAdapter
 import com.udacoding.kotlinsimpleecommerce.ui.home.fragment.HomeFragment
 import com.udacoding.kotlinsimpleecommerce.ui.home.fragment.ProfileFragment
 import com.udacoding.kotlinsimpleecommerce.ui.keranjang.KeranjangFragment
 import kotlinx.android.synthetic.main.home_activity.*
 import kotlinx.android.synthetic.main.home_fragment.*
+import org.jetbrains.anko.sdk27.coroutines.onClick
+import org.jetbrains.anko.startActivity
 
 class Home : AppCompatActivity() {
 
@@ -25,6 +28,10 @@ class Home : AppCompatActivity() {
 
         val fragment = HomeFragment()
         addFragment(fragment)
+
+        ivSearch.onClick {
+            startActivity<Search>()
+        }
 
     }
 

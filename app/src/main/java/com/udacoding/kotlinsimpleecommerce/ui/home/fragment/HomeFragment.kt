@@ -98,6 +98,17 @@ class HomeFragment : Fragment() {
     }
 
     private fun showImageSlider(it: ResponseListProduk?) {
-        imageSlider.sliderAdapter = SliderAdapter(it?.data)
+        imageSlider.sliderAdapter = SliderAdapter(it?.data, object : SliderAdapter.OnItemClickListener {
+            override fun itemClick(dataItem: DataItem?) {
+                startActivity<DetailProduk>(
+                    "id" to dataItem?.id,
+                    "nama" to dataItem?.nama,
+                    "deskripsi" to dataItem?.deskripsi,
+                    "harga" to dataItem?.harga,
+                    "gambar" to dataItem?.gambar
+                )
+            }
+
+        })
     }
 }

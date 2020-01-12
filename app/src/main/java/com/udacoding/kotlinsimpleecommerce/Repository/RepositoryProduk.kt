@@ -15,13 +15,23 @@ class RepositoryProduk {
     private val api = NetworkModule.getService()
     private val composite = CompositeDisposable()
 
-    private lateinit var produkResult: LiveData<ResponseListProduk>
-
-
-    fun Produk(): LiveData<ResponseListProduk>{
-        return produkResult
+    //search
+    fun searchApi(
+        produk: String,
+        responHandler: (ResponseListProduk) -> Unit,
+        errorHandler: (Throwable) -> Unit
+    ) {
+        composite.add(
+            api.search(produk)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe({
+                    responHandler(it)
+                },{
+                    errorHandler(it)
+                })
+        )
     }
-
 
     //getproduk
     fun getProdukApi(
