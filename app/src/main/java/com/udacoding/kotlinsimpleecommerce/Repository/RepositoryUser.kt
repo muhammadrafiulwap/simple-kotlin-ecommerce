@@ -54,4 +54,8 @@ class RepositoryUser {
         )
     }
 
+    fun onClear(){
+        composite.clear()
+    }
+
 }

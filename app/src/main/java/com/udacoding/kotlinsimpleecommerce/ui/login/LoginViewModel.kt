@@ -36,4 +36,8 @@ class LoginViewModel : ViewModel() {
             isEmpty.value = true
         }
     }
+
+    fun onClear() {
+        repository.onClear()
+    }
 }

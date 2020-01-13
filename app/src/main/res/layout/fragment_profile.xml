@@ -3,7 +3,74 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.home.fragment.ProfileFragment">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        app:cardCornerRadius="8dp"
+        android:layout_marginRight="10dp"
+        android:layout_height="wrap_content">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="20dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:text="Nama"
+            android:textColor="#000"
+            android:textSize="14sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:id="@+id/tvNama"
+            android:text="Nama"
+            android:layout_marginTop="10dp"
+            android:textColor="#000"
+            android:textSize="16sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:text="Nomor Handphone"
+            android:layout_marginTop="20dp"
+            android:textColor="#000"
+            android:textSize="14sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:id="@+id/tvNohp"
+            android:text="Handphone"
+            android:layout_marginTop="10dp"
+            android:textColor="#000"
+            android:textSize="16sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:text="Alamat"
+            android:layout_marginTop="20dp"
+            android:textColor="#000"
+            android:textSize="14sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:id="@+id/tvAlamat"
+            android:text="Alamat"
+            android:layout_marginTop="10dp"
+            android:textColor="#000"
+            android:textSize="16sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+    </androidx.cardview.widget.CardView>
 
     <Button
         android:id="@+id/btnLogout"
@@ -11,12 +78,14 @@
         android:layout_gravity="bottom"
         android:text="Logout"
         android:background="@drawable/bg_button_border_lightblue"
-        android:textColor="@color/colorBlue"
+        android:textColor="#000"
         android:layout_width="match_parent"
-        android:layout_marginBottom="5dp"
+        android:layout_marginBottom="10dp"
         android:textSize="14sp"
         android:layout_marginRight="20dp"
         android:layout_marginLeft="20dp"
         android:layout_height="wrap_content"/>
+
+
 
 </FrameLayout>

@@ -37,6 +37,7 @@ class Home : AppCompatActivity() {
 
     private val mOnNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
         when (item.itemId) {
+
             R.id.menu_home -> {
                 val fragment = HomeFragment()
                 addFragment(fragment)

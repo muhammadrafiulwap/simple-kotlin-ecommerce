@@ -45,6 +45,10 @@ interface ApiService {
     fun getKeranjang(): Observable<ResponseListKeranjang>
 
     @FormUrlEncoded
+    @POST("deleteKeranjang")
+    fun delKeranjang(@Field("id") id: String): Single<ResponseAddKeranjang>
+
+    @FormUrlEncoded
     @POST("addKeranjang")
     fun addKeranjang(
         @Field("iduser") id_user: String,

@@ -35,6 +35,10 @@ class ProfileFragment : Fragment() {
 
         session = SessionManager(context!!)
 
+        tvNama.text = session?.fullname
+        tvNohp.text = session?.nohp
+        tvAlamat.text = session?.alamat
+
         btnLogout.onClick {
             session?.logout()
             startActivity(intentFor<Login>().clearTop().newTask().clearTask())

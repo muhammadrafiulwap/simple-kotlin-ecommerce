@@ -138,6 +138,28 @@ class RepositoryProduk {
         )
     }
 
+    //delkeranjang
+    fun delKeranjangApi(
+        id: String,
+        responHandler: (ResponseAddKeranjang)-> Unit,
+        errorHandler: (Throwable)-> Unit
+    ) {
+        composite.add(
+            api.delKeranjang(id)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe({
+                    responHandler(it)
+                },{
+                    errorHandler(it)
+                })
+        )
+    }
+
+    fun onClear() {
+        composite.clear()
+    }
+
 
 
 

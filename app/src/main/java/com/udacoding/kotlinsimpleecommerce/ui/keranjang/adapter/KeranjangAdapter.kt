@@ -42,6 +42,10 @@ class KeranjangAdapter(
             listener.itemClick(item)
         }
 
+        holder.mDelete.onClick {
+            listener.delItem(item)
+        }
+
     }
 
 
@@ -51,11 +55,13 @@ class KeranjangAdapter(
         val mNama = view.tvNama
         val mHarga = view.tvHarga
         val mJenis = view.tvJenis
+        val mDelete = view.ivDelete
 
     }
 
     interface onItemClickListener {
         fun itemClick(item: DataItem?)
+        fun delItem(item: DataItem?)
     }
 
 }
